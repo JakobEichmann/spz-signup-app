@@ -29,13 +29,13 @@ RUN mkdir /state && \
 
 # copy code & config
 COPY --chown=spz:spz uwsgi.ini uwsgi.ini
-COPY --chown=spz:spz src/spz spz
+COPY --chown=spz:spz src .
 
 # switch to spz user
 USER 1000
 
 # build assets
-RUN python -m spz.setup.build_assets
+RUN python -m setup.build_assets
 
 # expose port
 EXPOSE 3031
